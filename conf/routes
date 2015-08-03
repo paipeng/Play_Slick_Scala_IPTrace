@@ -1,0 +1,33 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+
+# Home page
+POST    /insert                     controllers.Application.insert
+
+GET     /json/all                   controllers.Application.jsonFindAll
+
+# Home page
+POST    /json/insert                controllers.Application.jsonInsert
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# Get IP
+
+GET    /json/echoIP                     controllers.Application.echoIP
+GET     /json/echo                  controllers.Application.echo(echo: String)
+
+GET     /json/iptokens                   controllers.Application.ipTokenFindAll
+GET     /json/ipaddresses                   controllers.Application.ipAddressesFindAll
+
+
+GET     /json/generateIPToken       controllers.Application.generateIPToken(set: String, get: String)
+
+GET     /json/setIP       controllers.Application.setIP(token: String)
+GET     /json/getIPs       controllers.Application.getIPs(token: String)
+GET     /json/getIP       controllers.Application.getLastIP(token: String)
+
