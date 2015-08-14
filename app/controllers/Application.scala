@@ -109,11 +109,12 @@ object Application extends Controller{
   }
   
   def generateIPToken(set: String, get: String) = DBAction { implicit rs =>
-      val ipToken = new IPToken(-1, set, get)
-      val autoGenratedKey = iptokens.insert(ipToken)
+      val ipToken = new IPToken(-1, set, get, null)
+      //val autoGenratedKey = iptokens.insert(ipToken)
       val newId = (iptokens returning iptokens.map(_.id) += ipToken)
+      val ipToken2 = iptokens.filter(_.id === newId).first
       //ipToken.id = autoGenratedKey
-      Ok(toJson(new IPToken(newId, set, get)))
+      Ok(toJson(ipToken2))
       //implicit rs => Ok(toJson(ipToken))
       //Redirect(routes.Application.index)
   }
